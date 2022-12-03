@@ -3,7 +3,7 @@
 
             {
                 "local_server":"false" ,
-                "local_uri":"mysql://Learntocod:Gopal123@Learntocod.mysql.pythonanywhere-services.com/Learntocod$default",
+                "local_uri":"sqlite:///",
                 "prod_uri":"mysql://Learntocod:Gopal123@Learntocod.mysql.pythonanywhere-services.com/Learntocod$default",
                 "fb_url" : "https://www.facebook.com/learn2c0d/",
                 "ig_url" : "https://www.instagram.com/learn2_cod/",
