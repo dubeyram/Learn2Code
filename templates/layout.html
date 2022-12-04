@@ -56,8 +56,8 @@
     style="background-color:#232727; position:sticky">
 
     <div class="container">
-      <img _ngcontent-serverapp-c51 height="39px" width="39px" style="border-radius: 50%;" src="{{ url_for('static', filename='img/image.jpg') }}"
-        alt="Learn2cod" class="brandLogo">
+      <img _ngcontent-serverapp-c51 height="39px" width="39px" style="border-radius: 50%;"
+        src="{{ url_for('static', filename='img/image.jpg') }}" alt="Learn2cod" class="brandLogo">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation" style="color:aliceblue ; margin-top:0%;">
@@ -80,34 +80,35 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a id='g' class=" nav-link" href="/practice" style="font-weight:bolder">Practice</a>
-        </li>
+          <li class="nav-item">
+            <a id='g' class=" nav-link" href="/practice" style="font-weight:bolder">Practice</a>
+          </li>
 
 
-        {% if session['logged_in'] %}
-        <li class="nav-item">
-          <img _ngcontent-serverapp-c51="" height="39px" width="39px" style="border-radius: 50%;" src="static/img/image.jpg"
-          alt="Learn2cod" class="brandLogo">
+          {% if session['logged_in'] %}
+          <li class="nav-item">
+            <img _ngcontent-serverapp-c51="" height="39px" width="39px" style="border-radius: 50%;"
+              src="static/img/image.jpg" alt="Learn2cod" class="brandLogo">
           </li>
           <li class="nav-item">
 
-          <a id= "g" href="/profile/{{session['username']}}" class="nav-link" style="font-weight:bolder"> Welcome {{session['username']}}</a>
-        </li>
-        {% endif %}
+            <a id="g" href="/profile/{{session['username']}}" class="nav-link" style="font-weight:bolder"> Welcome
+              {{session['username']}}</a>
+          </li>
+          {% endif %}
 
-        {% if not session['logged_in'] %}
-        <li class="nav-item">
-        <a id= "g" href="/login" class="nav-link" style="text-decoration:none">
-          Login
-        </a>
-      </li>
-        <li class="nav-item">
-        <a id= "g" href="/signup" class="nav-link" style="text-decoration:none">
-          Sign Up
-        </a>
-        </li>
-        {% endif %}
+          {% if not session['logged_in'] %}
+          <li class="nav-item">
+            <a id="g" href="/login" class="nav-link" style="text-decoration:none">
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="g" href="/signup" class="nav-link" style="text-decoration:none">
+              Sign Up
+            </a>
+          </li>
+          {% endif %}
 
         </ul>
       </div>

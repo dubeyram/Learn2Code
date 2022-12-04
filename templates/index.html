@@ -15,10 +15,8 @@
     font-size: 60px;
   }
 </style>
-<header
-  class="masthead"
-  style="background-image: url(https://source.unsplash.com/1600x900/?developer)"
->
+<header class="masthead" style="background-image:
+  url(https://source.unsplash.com/1600x900/?developer)">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -40,13 +38,15 @@
             <span class="letters letters-5">Data Science</span>
           </h1>
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
           <style type="text/css">
             .ml4 {
               position: relative;
               font-weight: 900;
               font-size: 10px;
             }
+
             .ml4 .letters {
               position: absolute;
               margin: auto;
@@ -60,7 +60,6 @@
               text-shadow: 2px 2px green;
             }
           </style>
-
           <script type="text/javascript">
             var ml4 = {};
             ml4.opacityIn = [0, 1];
@@ -167,8 +166,8 @@
         <a href="/post/{{post.slug}}">
           <h2 class="post-title">{{ post.title }}</h2>
 
-          <h3 class="post-subtitle">{{post.tagline}}</h3></a
-        >
+          <h3 class="post-subtitle">{{post.tagline}}</h3>
+        </a>
 
         <p class="post-meta">Posted by Admin on {{post.date}}</p>
 
@@ -180,30 +179,46 @@
 
       <!-- Pager -->
       <div class="clearfix">
-        <a
-          class="btn btn-success float-left"
-          href="{{prev}}"
-          style="
-            border-radius: 50%;
-            color: midnightblue;
-            font-weight: bolder;
-            font-size: 23px;
-          "
-        >
-          &#8249;</a
-        >
 
-        <a
-          class="btn btn-success float-right"
-          href="{{next}}"
-          style="
-            border-radius: 50%;
-            color: midnightblue;
-            font-weight: bolder;
-            font-size: 23px;
-          "
-          >&#8250;
+        {% if prev_hide %}
+        <a class="btn btn-success float-left" href="{{prev}}" style="
+          border-radius: 50%;
+          color: midnightblue;
+          font-weight: bolder;
+          font-size: 23px;
+          pointer-events: none
+          ">
+          &#8249;</a>
+        {% endif %}
+        {% if not prev_hide %}
+        <a class="btn btn-success float-left" href="{{prev}}" style="
+          border-radius: 50%;
+          color: midnightblue;
+          font-weight: bolder;
+          font-size: 23px;
+          ">
+          &#8249;</a>
+        {% endif %}
+        {% if hide %}
+        <a class="btn btn-success float-right" href="{{next}}" style=" 
+          border-radius: 50%;
+          color: midnightblue;
+          font-weight: bolder;
+          font-size: 23px;
+          pointer-events: none
+          ">&#8250;
         </a>
+        {% endif %}
+        {% if not hide %}
+        <a class="btn btn-success float-right" href="{{next}}" style="
+          border-radius: 50%;
+          color: midnightblue;
+          font-weight: bolder;
+          font-size: 23px;
+          ">&#8250;
+        </a>
+        {% endif %}
+
       </div>
     </div>
   </div>

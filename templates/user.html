@@ -1,39 +1,39 @@
 {% extends "layout.html" %}
-{% block body %}  
+{% block body %}
 
-  <header class="masthead" style="background-image: url({{ url_for('static' , filename='img/about2.jpg')}})">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
+<header class="masthead" style="background-image: url({{ url_for('static' , filename='img/about2.jpg')}})">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
 
-  
 
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-                <h1  style="margin-top: 60px ;"></h1>
 
-            <h1 class="subheading" style="margin-top: 100px"></h1>
-          </div>
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1 style="margin-top: 60px ;"></h1>
+
+          <h1 class="subheading" style="margin-top: 100px"></h1>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Main Content -->
+<!-- Main Content -->
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-     
-      	  {% if session.logged_in %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
 
-            <h3>Greetings {{username.name}}</h3>
-            <h3>Email {{username.email}}</h3>
-     <a href ="/logout" type="button">logout</a>
+      {% if session.logged_in %}
 
-              {% endif %}
-        <p>{{params['about_text']}}</p>
-      </div>
+      <h3>Greetings {{username.name}}</h3>
+      <h3>Email {{username.email}}</h3>
+      <a href="/logout" type="button">logout</a>
+
+      {% endif %}
+      <p>{{params['about_text']}}</p>
     </div>
   </div>
+</div>
 {% endblock %}

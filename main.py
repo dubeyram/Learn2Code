@@ -102,10 +102,10 @@ def login_required(f):
 @app.route("/")
 def index():
     posts = Posts.query.filter_by().all()
-    last = math.ceil(len(posts) / int(params["no_of_posts"]))
-
+    post_len = len(posts)
+    last = math.ceil(post_len / int(params["no_of_posts"]))
     page = request.args.get("page")
-
+    print("Page", page)
     if not str(page).isnumeric():
         page = 1
     page = int(page)
@@ -128,9 +128,17 @@ def index():
     else:
         prev = "/?page=" + str(page - 1)
         next = "/?page=" + str(page + 1)
-
+    hide = False
+    if post_len<=page*params["no_of_posts"]:
+        print("IN if",post_len, len(posts), (page*params["no_of_posts"]))
+        hide = True
+    prev_hide = False
+    if prev == "#":
+        prev_hide = True
+    if next == "#":
+        hide = True
     return render_template(
-        "index.html", params=params, posts=posts, prev=prev, next=next
+        "index.html", params=params, posts=posts, prev=prev, next=next, hide=hide, prev_hide = prev_hide
     )
 
 
@@ -263,6 +271,9 @@ def contact():
         email = request.form.get("email")
         phone = request.form.get("phone")
         message = request.form.get("message")
+        if not name or not email or not phone or not message:
+            flash('All fields are required, Please Try Again!')
+            return redirect("/contact")
         print("Email: ", request.form)
         entry = Contacts(
             name=name,
@@ -318,6 +329,9 @@ def contact1():
             date=d.today(),
             email=email,
         )
+        if not name or not email or not phone or not message:
+            flash('All fields are required, Please Try Again!')
+            return redirect("/contact")
         db.session.add(entry)
         db.session.commit()
         msg = MIMEMultipart()
